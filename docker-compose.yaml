@@ -1,0 +1,28 @@
+
+services:
+  postgres:
+    image: postgres
+    container_name: crm-postgres1
+    environment:
+#      POSTGRES_PASSWORD: 1234qwer
+      POSTGRES_DB: crm
+      POSTGRES_USER: verteksar
+      POSTGRES_PASSWORD: 1234qwer
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  crm:
+    build: .
+    container_name: crm1
+    restart: always
+    environment:
+      DEBUG: True
+      DJANGO_SUPERUSER_PASSWORD: 1
+    command: bash -c "python manage.py migrate && python manage.py createsuperuser --username admin --email test@test.com --noinput && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8711:8000
+    depends_on:
+      - postgres
+volumes:
+  postgres_data:

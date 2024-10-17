@@ -1,0 +1,54 @@
+{% extends "service/_base.html" %}
+
+{% block content %}
+<h2 class="fw-bold">Общая статистика</h2>
+<div class="row bg-white px-3 py-3 mx-2 my-5 rounded pb-5 shadow-lg">
+    <div class="col">
+        <div class="card border-light shadow" style="background: #eee">
+            <div class="card-body bg-gray-900">
+                <h5 class="card-title fw-bold">
+                    <strong>Услуг</strong>
+                </h5>
+                <i class="fas fa-microchip float-end"></i>
+                <p class="card-text fw-bold fs-1">{{ products.count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-light shadow" style="background: #eee">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">
+                    <strong>Рекламных компаний</strong>
+                </h5>
+                <i class="fas fa-ad float-end"></i>
+                <p class="card-text fw-bold fs-1">{{ advertisements.count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-light shadow" style="background: #eee">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">
+                    <strong>Лидов</strong>
+                </h5>
+                <i class="fas fa-user-clock float-end"></i>
+                <p class="card-text fw-bold fs-1">{{ leads.count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-light shadow">
+            <div class="card-body" style="background: #eee">
+                <h5 class="card-title fw-bold">
+                    <strong>Активных клиентов</strong>
+                </h5>
+                <i class="fas fa-user-check float-end"></i>
+                <p class="card-text fw-bold fs-1">{{ customers.count }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hstack gap-3 pb-4">
+    <a href="/ads/statistic" class="btn btn-primary p-2">Статистика рекламных кампаний</a>
+</div>
+{% endblock %}
